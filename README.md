@@ -12,3 +12,5 @@ command : php artisan serve
 # Step 4: create a view
 command : php artisan make:view view_name
 
+# Step 5: Create a Controller
+command : php artisan make:controller controller_name
