@@ -1,16 +1,98 @@
 # laravel Documentation
 
-## Step 1 : Create a Laravel Project
-command : laravel new project_name
+## Project Management Commands
 
-## Step 2: Database Migration
-command : php artisan migrate
+- ### Create a Laravel Project
+        laravel new project_name
 
-## Step 3: Run the project
-command : php artisan serve
-    
-## Step 4: create a view
-command : php artisan make:view view_name
+- ### Run the project
+        php artisan serve
 
-## Step 5: Create a Controller
-command : php artisan make:controller controller_name
+- ### Make Application to maintenance mode
+        php artisan down
+
+- ### Brings Application out of maintenance mode
+        php artisan up
+
+## Database Management Commands
+
+- ### Database Migration
+        php artisan migrate
+
+- ### Rolls back the last database migration
+        php artisan migrate:rollback
+
+- ### Roll back all migration
+        php artisan migrate:reset
+
+- ### Refresh All database migration
+        php artisan migrate:refresh
+
+-  ### Seed the data
+        php artisan db:seed
+
+- ### Clear All table in Database
+        php artisan db:wipe
+
+## Code generate Commands
+
+- ### Create a view
+        php artisan make:view view_name
+
+- ### Create a Controller
+        php artisan make:controller controller_name
+
+- ### Create a Model
+        php artisan make:model model_name
+
+- ### Create a job
+        php artisan make:job job_name
+
+- ### Create a Command
+        php artisan make:command command_name
+
+- ### Generate a New Mail
+        php artisan make:mail mail_name
+
+- ### Generate a New Middleware
+        php artisan make:middleware middleware_name
+
+- ### Generate a Validation Rule
+        php artisan make:rule rule_name
+
+- ### Generate a Application Key
+        php artisan key:generate
+
+- ### Create a Seeder Class
+        php artisan make:seeder
+
+## Queue regarding Commands
+
+- ###  Start processing jobs on the queue
+        php artisan queue:work
+
+- ### List all of the failed queue jobs
+        php artisan queue:failed
+
+- ### Flush all of the failed queue jobs
+        php artisan queue:flush
+
+- ### Delete a failed queue job
+        php artisan queue:forget
+
+- ### Retry a failed queue job
+        php artisan queue:retry
+
+## Other commands
+
+- ### Run the scheduled commands
+        php artisan schedule:run   
+
+- ### Create the links between public/storage and storage/app/public
+        php artisan storage:link
+
+- ### remove the links between public/storage and storage/app/public
+        php artisan storage:unlink
+
+- ### Publish all stubs
+        php artisan stub:publish
