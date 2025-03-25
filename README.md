@@ -28,6 +28,9 @@
 - ### Refresh All database migration
         php artisan migrate:refresh
 
+- ### Create table in migration
+        php artisan make:migration file_name
+
 -  ### Seed the data
         php artisan db:seed
 
@@ -65,6 +68,9 @@
 
 - ### Create a Seeder Class
         php artisan make:seeder
+
+- ### Create a API
+        php artisan install:api
 
 ## Queue regarding Commands
 
