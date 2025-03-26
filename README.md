@@ -102,3 +102,16 @@
 
 - ### Publish all stubs
         php artisan stub:publish
+
+## Default Auth using breeze and alpine js
+
+        composer require laravel/breeze --dev
+        php artisan breeze:install
+
+## Use Seeder and Faker to Generate and store testing data for Student table
+
+- ### create a seeder
+        php artisan make:seeder StudentSeeder
+
+- ### run the StudentSeedeer file
+        php artisan db:seed --class=StudentSeeder
