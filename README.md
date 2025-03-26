@@ -115,3 +115,7 @@
 
 - ### run the StudentSeedeer file
         php artisan db:seed --class=StudentSeeder
+
+## Show Data Using yajra plugin
+        composer require yajra/laravel-datatables:"^12.0"
+        php artisan vendor:publish --provider="Yajra\DataTables\DataTablesServiceProvider"
