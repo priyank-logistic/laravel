@@ -36,12 +36,27 @@ class StudentController extends Controller
                     });
                 }
             })
+            ->addColumn("action", function($student){
+                return '<button class="delete-student" data-id="'.$student->id.'">Delete</button>';
+            })
             ->make(true); 
             
         }
         return view("students");
     }
 
+    function delete($id){
+        $student = Student::findOrFail($id);
+        if($student){
+            $student->delete();
+            return response()->json(["status"=> "success","message"=> "student deleted"]);
+        }
+        else{
+            return response()->json(["status"=> "error","message"=> "student not deleted"]);
+        }
+
+    }
+    
     function sendEmail(){
         $to = 'priyankviradiya227@gmail.com';
         $msg = 'you have successfully completed the task';

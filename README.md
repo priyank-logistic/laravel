@@ -123,3 +123,6 @@
 ## Send Email Using tinker
         php artisan tinker
         app()->call('App\Http\Controllers\StudentController@sendEmail');
+
+## send Email using observer while delete the student
+        php artisan make:observer StudentObserver --model=Student

@@ -19,5 +19,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('students',[StudentController::class,'index'])->name('students.index');
+Route::delete('students/delete/{id}',[StudentController::class,'delete']);
 
 require __DIR__.'/auth.php';
