@@ -119,3 +119,7 @@
 ## Show Data Using yajra plugin
         composer require yajra/laravel-datatables:"^12.0"
         php artisan vendor:publish --provider="Yajra\DataTables\DataTablesServiceProvider"
+
+## Send Email Using tinker
+        php artisan tinker
+        app()->call('App\Http\Controllers\StudentController@sendEmail');

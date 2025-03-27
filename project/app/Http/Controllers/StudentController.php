@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use Yajra\DataTables\DataTables as DataTables;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\sendEmail;
 
 class StudentController extends Controller
 {
@@ -40,4 +42,13 @@ class StudentController extends Controller
         return view("students");
     }
 
+    function sendEmail(){
+        $to = 'priyankviradiya227@gmail.com';
+        $msg = 'you have successfully completed the task';
+        $subject = 'congratulation';
+        Mail::to($to)->send(new sendEmail($msg,$subject)); 
+    return "Email Send";
+    }
+
 }
+
