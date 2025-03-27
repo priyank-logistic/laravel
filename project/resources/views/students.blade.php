@@ -39,52 +39,69 @@
         $(document).ready(function() {
 
             var table = $("#data-table").DataTable({
-                processing : true,
-                serverSide : true,
-                ajax:{
-                    url:"{{route('students.index')}}",
-                    data: function (d) {
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: "{{route('students.index')}}",
+                    data: function(d) {
                         d.is_active = $('#status').val()
                     },
                 },
-                columns : [
-                    {data:'id',name:'id'},
-                    {data:'name',name:'name'},
-                    {data:'email',name:'email'},
-                    {data:'state',name:'state'},
-                    {data:'phone',name:'phone'},
-                    {data: 'is_active', name: 'is_active'},
-                    {data:'action',name:'action'},
+                columns: [{
+                        data: 'id',
+                        name: 'id'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'email',
+                        name: 'email'
+                    },
+                    {
+                        data: 'state',
+                        name: 'state'
+                    },
+                    {
+                        data: 'phone',
+                        name: 'phone'
+                    },
+                    {
+                        data: 'is_active',
+                        name: 'is_active'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        render: function(data, type, row, meta) {
+                            var id = row.id;
+                            return '<button class="delete-student" data-id="' + id + '">Delete</button>';
+                        }
+                    },
                 ],
-                columnDefs:[{
-                    targets: [-1], render: function (data, type, row, meta) {
-                        var id = row.id;
-                        return '<button class="delete-student" data-id="' + id +'">Delete</button>';
-                    }
-                }]
             });
-            $('#status').on('change', function () {
+            $('#status').on('change', function() {
                 table.ajax.reload();
             });
 
-            $('#data-table').on('click','.delete-student', function() {
+            $('#data-table').on('click', '.delete-student', function() {
                 const studentId = $(this).data('id');
                 // console.log(studentId);
-                if(studentId){
+                if (studentId) {
                     $.ajax({
-                        url:`{{url('students/delete')}}/${studentId}`,
+                        url: `{{url('students/delete')}}/${studentId}`,
                         method: 'DELETE',
-                        data:{
+                        data: {
                             _token: '{{ csrf_token() }}',
                         },
-                        
-                        success: function(response){
-                            if(response.status == 'success'){
+
+                        success: function(response) {
+                            if (response.status == 'success') {
                                 //relode takes two parameter : one is callback function so i write null becuase i dont call any function
                                 //and second is that after the success data will redirect in first page so i write false to prevent it.
-                                table.ajax.reload(null,false);
-                            }
-                            else{
+                                table.ajax.reload(null, false);
+                            } else {
                                 alert(response.message);
                             }
 
@@ -93,7 +110,6 @@
                     })
                 }
             });
-
         })
     </script>
 </body>
