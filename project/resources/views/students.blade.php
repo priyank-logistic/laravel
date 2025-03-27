@@ -45,7 +45,6 @@
                     url:"{{route('students.index')}}",
                     data: function (d) {
                         d.is_active = $('#status').val()
-                        d.search = $('input[type="search"]').val()
                     },
                 },
                 columns : [
@@ -55,11 +54,15 @@
                     {data:'state',name:'state'},
                     {data:'phone',name:'phone'},
                     {data: 'is_active', name: 'is_active'},
-                    {data: 'action', name: 'action'},
-                ]
+                    {data:'action',name:'action'},
+                ],
+                columnDefs:[{
+                    targets: [-1], render: function (data, type, row, meta) {
+                        var id = row.id;
+                        return '<button class="delete-student" data-id="' + id +'">Delete</button>';
+                    }
+                }]
             });
-            
-
             $('#status').on('change', function () {
                 table.ajax.reload();
             });
@@ -90,7 +93,6 @@
                     })
                 }
             });
-
 
         })
     </script>

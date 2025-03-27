@@ -122,7 +122,12 @@
 
 ## Send Email Using tinker
         php artisan tinker
+
+- ### using Controller
         app()->call('App\Http\Controllers\StudentController@sendEmail');
+
+- ### without using controller
+        Mail::raw('Hello World!', function($msg) {$msg->to('priyankviradiya227@gmail.com')->subject('Test Email'); });
 
 ## send Email using observer while delete the student
         php artisan make:observer StudentObserver --model=Student
