@@ -8,10 +8,16 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
     <title>Students Data</title>
+
 </head>
 
 <body>
     <h1 style="text-align: center;">Students Data</h1>
+    <select name="status" id="status">
+        <option value="">Choose Status</option>
+        <option value="1">active</option>
+        <option value="0">inactive</option>
+    </select>
     <table border="1px" id="data-table">
         <thead>
             <tr>
@@ -20,6 +26,7 @@
                 <th>Email</th>
                 <th>State</th>
                 <th>Phone no.</th>
+                <th>is_active</th>
             </tr>
         </thead>
         <tbody>
@@ -29,18 +36,30 @@
 
     <script>
         $(document).ready(function() {
-            $("#data-table").DataTable({
+
+            var table = $("#data-table").DataTable({
                 processing : true,
                 serverSide : true,
-                ajax:"{{route('students.index')}}",
+                ajax:{
+                    url:"{{route('students.index')}}",
+                    data: function (d) {
+                        d.is_active = $('#status').val()
+                        d.search = $('input[type="search"]').val()
+                    },
+                },
                 columns : [
                     {data:'id',name:'id'},
                     {data:'name',name:'name'},
                     {data:'email',name:'email'},
                     {data:'state',name:'state'},
                     {data:'phone',name:'phone'},
+                    {data: 'is_active', name: 'is_active'},
                 ]
-            })
+            });
+
+            $('#status').on('change', function () {
+                table.draw();
+            });
 
         })
     </script>
