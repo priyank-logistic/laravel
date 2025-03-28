@@ -27,6 +27,7 @@
                 <th>State</th>
                 <th>Phone no.</th>
                 <th>Password</th>
+                <th>Subscription Date</th>
                 <th>is_active</th>
                 <th>Action</th>
             </tr>
@@ -71,6 +72,10 @@
                     {
                         data: 'password',
                         name: 'password'
+                    },
+                    {
+                        data: 'subscription_date',
+                        name: 'subscription_date'
                     },
                     {
                         data: 'is_active',

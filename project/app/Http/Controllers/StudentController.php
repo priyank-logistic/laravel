@@ -13,7 +13,7 @@ class StudentController extends Controller
     //
     function index(Request $request){
         if ($request->ajax()) {
-            $students = Student::All();
+            $students = Student::All()->append('password');
 
             if($request->is_active == "0" || $request->is_active == "1"){
                 $students = Student::query()->whereIn('is_active',[$request->is_active]);
@@ -57,7 +57,22 @@ class StudentController extends Controller
         else{
             return "Student not Saved";
         }
-        
+    }
+
+    function updateSubscription($id){
+        $student = Student::find($id);
+        if($student){
+            $newDate = $student->subscriptionDays($student->subscription_date, 12);
+            // return $newDate;
+            $student->subscription_date = $newDate;
+            $student->save();
+            
+            return response()->json(["status"=> "success","message"=> "days update"]);
+        }
+        else{
+            return response()->json(["status"=> "error","message"=> "student not found"]);
+        }
+
     }
 
 }

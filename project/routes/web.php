@@ -21,5 +21,6 @@ Route::middleware('auth')->group(function () {
 Route::get('students',[StudentController::class,'index'])->name('students.index');
 Route::delete('students/delete/{id}',[StudentController::class,'delete']);
 Route::get('add-student',[StudentController::class,'addStudent']);
+Route::get('students/update-subscription/{id}',[StudentController::class,'updateSubscription']);
 
 require __DIR__.'/auth.php';
