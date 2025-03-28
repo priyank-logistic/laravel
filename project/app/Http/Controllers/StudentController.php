@@ -47,7 +47,7 @@ class StudentController extends Controller
     function addStudent(){
         $student =  new Student;
         $student->name = "priyank viradiya";
-        $student->email = "priyankviradiya@gmail.com";
+        $student->email = "priyankviradiya227@gmail.com";
         $student->state = "Gujarat";
         $student->phone = "7452136985";
         $student->is_active = "1";

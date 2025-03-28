@@ -14,6 +14,9 @@ class StudentObserver
     public function created(Student $student): void
     {
         //
+        $refernce = random_int(100000, 999999);
+        $student->reference_code = $refernce;
+        $student->save();
     }
 
     /**
