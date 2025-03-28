@@ -46,8 +46,8 @@ class StudentController extends Controller
 
     function addStudent(){
         $student =  new Student;
-        $student->name = "priyank viradiya";
-        $student->email = "priyankviradiya227@gmail.com";
+        $student->name = "priyank";
+        $student->email = "priyankviradiya2@gmail.com";
         $student->state = "Gujarat";
         $student->phone = "7452136985";
         $student->is_active = "1";
@@ -62,12 +62,8 @@ class StudentController extends Controller
     function updateSubscription($id){
         $student = Student::find($id);
         if($student){
-            $newDate = $student->subscriptionDays($student->subscription_date, 12);
-            // return $newDate;
-            $student->subscription_date = $newDate;
-            $student->save();
-            
-            return response()->json(["status"=> "success","message"=> "days update"]);
+            $student->subscriptionDays(12);
+            return response()->json(["status"=> "success","message"=> "days add successfully"]);
         }
         else{
             return response()->json(["status"=> "error","message"=> "student not found"]);

@@ -18,7 +18,13 @@ class Student extends Model
         return $this->attributes['email'].'.'.$state;
     }
 
-    public function subscriptionDays($subscription_date,$days){
-        return Carbon::parse($subscription_date)->addDays($days);
+    public function subscriptionDays($days){
+        $subscription_date = $this->attributes['subscription_date'];
+        // return $subscription_date;
+        $newDate = Carbon::parse($subscription_date)->addDays($days);
+        // return $newDate;
+        $this->attributes['subscription_date'] = $newDate;
+        $this->save();
+        
     }
 }

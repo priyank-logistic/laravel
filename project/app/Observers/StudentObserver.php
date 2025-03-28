@@ -8,15 +8,19 @@ use App\Mail\sendEmail;
 
 class StudentObserver
 {
+    public function creating(Student $student): void
+    {
+        //
+        $refernce = random_int(100000, 999999);
+        $student->reference_code = $refernce;
+
+    }
     /**
      * Handle the Student "created" event.
      */
     public function created(Student $student): void
     {
         //
-        $refernce = random_int(100000, 999999);
-        $student->reference_code = $refernce;
-        $student->save();
     }
 
     /**
