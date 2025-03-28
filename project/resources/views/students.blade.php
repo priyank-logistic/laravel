@@ -26,6 +26,7 @@
                 <th>Email</th>
                 <th>State</th>
                 <th>Phone no.</th>
+                <th>Password</th>
                 <th>is_active</th>
                 <th>Action</th>
             </tr>
@@ -66,6 +67,10 @@
                     {
                         data: 'phone',
                         name: 'phone'
+                    },
+                    {
+                        data: 'password',
+                        name: 'password'
                     },
                     {
                         data: 'is_active',

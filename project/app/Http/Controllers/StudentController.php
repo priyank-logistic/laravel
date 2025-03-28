@@ -44,5 +44,21 @@ class StudentController extends Controller
     return "Email Send";
     }
 
+    function addStudent(){
+        $student =  new Student;
+        $student->name = "priyank viradiya";
+        $student->email = "priyankviradiya@gmail.com";
+        $student->state = "Gujarat";
+        $student->phone = "7452136985";
+        $student->is_active = "1";
+        if($student->save()){
+            return "Student Saved";
+        }
+        else{
+            return "Student not Saved";
+        }
+        
+    }
+
 }
 
